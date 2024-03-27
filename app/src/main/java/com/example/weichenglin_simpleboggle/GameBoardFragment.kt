@@ -140,6 +140,9 @@ class GameBoardFragment : Fragment(){
             }
 
             currentScore += wordScore
+            if (currentScore < 0) {
+                currentScore = 0
+            }
             viewModel.score.value = currentScore
         }
     }
@@ -305,7 +308,7 @@ class GameBoardFragment : Fragment(){
         // word is not at least 4 characters long
         if (word.length < 4) {
             Toast.makeText(this.context, "Words must be at least 4 chars long", Toast.LENGTH_SHORT).show()
-            return 0
+            return -10
         }
 
         for (ch in word) {
